@@ -1,0 +1,63 @@
+/* 修改 element ui 组件库的样式 */
+@import './mixins.scss';
+@import './element-variables.scss';
+
+.el-popover {
+  min-width: 100px !important;
+}
+
+.el-radio, .el-checkbox {
+  &.is-disabled {
+    .el-checkbox__label, .el-radio__label {
+      color: #555 !important;
+    }
+  }
+}
+
+.el-table {
+  &.el-table--small  {
+    tbody {
+      .cell {
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+/* 去掉点击的时候带的阴影边框 */
+.el-radio-button:focus:not(.is-focus):not(:active):not(.is-disabled) {
+  box-shadow: none !important;
+}
+
+/* 弹窗样式 */
+.el-dialog {
+  margin-top: 10vh !important;
+}
+.el-dialog__header {
+  border-bottom: 1px solid #ebeef5;
+}
+.el-dialog__body {
+  // height: 60vh;
+  max-height: 60vh;
+  padding: 16px;
+  overflow-y: auto;
+  @include scroll-style;
+}
+.el-dialog__footer {
+  border-top: 1px solid #ebeef5;
+}
+
+/* 对话框样式 */
+.el-message-box {
+  .el-message-box__content {
+    border-top: 1px solid #ebeef5;
+    border-bottom: 1px solid #ebeef5;
+  }
+}
+
+/* textarea placeholder 占位文字样式问题 */
+.el-textarea__inner {
+  font-family: Microsoft YaHei;
+  &::placeholder {
+    font-family: Microsoft YaHei;
+  }
+}

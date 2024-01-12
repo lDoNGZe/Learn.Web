@@ -1,0 +1,385 @@
+@import "./reset.scss";
+@import "./variables.scss";
+@import "./sidebar.scss";
+@import "./transition.scss";
+@import "./reset-element.scss";
+@import "./element-variables.scss";
+@import "./common.scss";
+@import "./mixins.scss";
+
+html,
+body {
+  height: 100%;
+  font-family: Microsoft YaHei;
+  @include scroll-style;
+}
+
+#app {
+  height: 100%;
+}
+
+.layout {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  &.hidden-headerBar{
+    padding-top: 0px;
+  }
+  .breadcrumb-wrap {
+    padding-top: 6px;
+    padding-left: 14px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    .toogle-icon {
+      font-size: 22px;
+      font-family: Microsoft YaHei Regular, Microsoft YaHei Regular-Regular;
+      color: #555555;
+      cursor: pointer;
+    }
+  }
+  .wrapper {
+    width: 100%;
+    &.showHeadbar {
+      padding-top: $headerHeight;
+    }
+    &.fixed-navbar {
+      .nav-bar {
+        position: fixed;
+        left: $sideBarWidth;
+        top: 0;
+        z-index: 999;
+        &.hide-sidebar {
+          left: 0;
+        }
+        &.showHeadbar {
+          top: $headerHeight;
+        }
+      }
+      &.breadcrumbs {
+        .rightbar {
+          padding-top: $breadcrumbHeight;
+        }
+        &.tagsView {
+          .rightbar {
+            padding-top: $navbarHeight;
+          }
+        }
+      }
+      &.tagsView {
+        .rightbar {
+          padding-top: $tagsViewHeight;
+        }
+      }
+    }
+    &.mobile {
+      .sidebar {
+        width: 0px !important;
+      }
+      .rightbar {
+        margin-left: 0px !important;
+      }
+      .nav-bar {
+        left: 0px !important;
+      }
+      &.show-pinch {
+        .sidebar {
+          width: 64px !important;
+        }
+      }
+    }
+  }
+  .rightbar {
+    min-height: 100%;
+    overflow-x: hidden;
+    background-color: #EFF2F4;
+    margin-left: $sideBarWidth;
+    transition:  margin-left 0.16s linear;
+    &.hide-sidebar {
+      margin-left: 0;
+    }
+  }
+  .nav-bar {
+    width: 100%;
+  }
+}
+// 顶部菜单栏
+.headerBar {
+  height: $headerHeight;
+  display: flex;
+  align-items: center;
+  background-color: $headerBgCorlor;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-sizing: border-box;
+  .left-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    .companyTitle {
+      display: flex;
+      align-items: center;
+      padding-right: 24px;
+      .logo-name {
+        font-size: 24px;
+        font-family: HYGangYiTi;
+      }
+    }
+    // ul {
+    //   flex: 1;
+    //   display: flex;
+    //   li {
+    //     height: $headerHeight;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     box-sizing: border-box;
+    //     font-size: 18px;
+    //     margin-right: 16px;
+    //     cursor: pointer;
+    //     padding: 0 10px;
+    //   }
+    // }
+  }
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+  &.show-pinch {
+    .sidebar {
+      width: 64px !important;
+      .el-menu--collapse {
+        .el-submenu {
+          & > .el-submenu__title {
+            & > span {
+              height: 0;
+              width: 0;
+              overflow: hidden;
+              visibility: hidden;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+    .nav-bar {
+      left: 64px !important;
+      transition: left 0.16s !important;
+    }
+    .rightbar {
+      margin-left: 64px !important;
+      transition: margin-left 0.16s !important;
+    }
+  }
+  // 侧边栏样式
+  .sidebar {
+    width: $sideBarWidth !important;
+    background-color: $sideBarBgColor;
+    z-index: 999;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+    &.showHeadbar {
+      top: $headerHeight;
+    }
+    &.hidden-headerBar{
+      top: 0px;
+    }
+    // reset element-ui css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    .el-scrollbar {
+      height: 100%;
+    }
+
+    &.has-logo {
+      .el-scrollbar {
+        height: calc(100% - 50px);
+      }
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .svg-icon {
+      margin-right: 16px;
+    }
+
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+    }
+    // menu hover
+    .submenu-title-noDropdown,
+    .el-submenu__title {
+      border-bottom: 1px solid $borderColor !important;
+      &:hover {
+        background-color: var(--color) !important;
+        color: $subMenuActiveText !important;
+        .iconfont {
+          color: $subMenuActiveText !important;
+        }
+        .el-icon-arrow-right, .el-icon-arrow-down {
+          color: $subMenuActiveText !important;
+        }
+        
+      }
+    }
+
+    .is-active > .el-submenu__title {
+      color: $subMenuActiveText !important;
+      .iconfont {
+        color: $subMenuActiveText !important;
+      }
+      .el-submenu__icon-arrow {
+        &.el-icon-arrow-right {
+          color: $subMenuActiveText !important;
+        }
+      }
+    }
+    & .nest-menu .el-submenu > .el-submenu__title,
+    & .el-submenu .el-menu-item {
+      min-width: $sideBarWidth !important;
+      background-color: $menuBg !important;
+      &:hover {
+        .iconfont {
+          color: $subMenuActiveText !important;
+        }
+        .little-circle {
+          background-color: $subMenuActiveText !important;
+          border: 1px solid $subMenuActiveText !important;
+        }
+        background-color: var(--color) !important;
+        color: $subMenuActiveText !important;
+      }
+    }
+
+    & .el-submenu .is-active {
+      background-color: $menuHover !important;
+    }
+    .el-submenu__icon-arrow {
+      &.el-icon-arrow-down {
+        color: $menuText !important;
+      }
+    }
+    .el-submenu__icon-arrow {
+      &.el-icon-arrow-right {
+        color: $menuText !important;
+        margin-top: -4px !important;
+        right: 5px !important;
+      }
+    }
+    .el-menu-item {
+      border-bottom: 1px solid $borderColor !important;
+      &:hover {
+        background-color: var(--color) !important;
+        color: $menuActiveText !important;
+        .iconfont {
+          color: $menuActiveText !important;
+        }
+      }
+      &.is-active {
+        background-color: var(--color) !important;
+        color: $menuActiveText !important;
+        .little-circle {
+          background-color: $subMenuActiveText !important;
+          border: 1px solid $subMenuActiveText !important;
+        }
+      }
+    }
+  }
+  //主体部分
+  .router-view {
+    min-height: 100%;
+    position: relative;
+    padding: 16px 10px 10px 10px;
+  }
+  .iconfont {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 2px;
+    color: $menuText;
+  }
+  .little-circle {
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    background: #2b3648;
+    border: 1px solid #4a5971;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .el-submenu {
+    .is-active {
+      color: $subMenuActiveText !important;
+      .little-circle {
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+      }
+      .iconfont {
+        color: $subMenuActiveText !important;
+      }
+    }
+  }
+}
+
+// 总驾驶舱全屏展示页面样式
+.show-cockpit {
+  .sidebar {
+    display: none;
+  }
+  .rightbar {
+    padding-left: 0px;
+  }
+  .app-breadcrumb {
+    display: none !important;
+  }
+  .breadcrumb-wrap {
+    display: none !important;
+  }
+}
+// 总驾驶舱非全屏展示页面样式
+.hidden-cockpit {
+  width: 100%;
+}

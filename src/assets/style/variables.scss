@@ -1,0 +1,41 @@
+@import './element-variables.scss';
+
+/* 顶部菜单栏 */
+$headerHeight: 50px; // 顶部菜单栏高度
+$breadcrumbHeight: 37px; // 面包屑高度
+$tagsViewHeight: 34px;
+$navbarHeight: $breadcrumbHeight + $tagsViewHeight; // 顶部菜单栏高度
+$headerBgCorlor: #282E38; // 顶部菜单栏背景色
+$headerActiveText: $--color-primary; //  顶部菜单激活文字颜色
+/* 侧边栏 */
+$sideBarWidth: 205px; // 侧边栏宽度
+$sideBarBgColor: #32363D; // 侧边栏背景色
+/* menu */
+$menuBg: #32363D; // menu 背景色
+$menuHover: $--color-primary; // menu 鼠标悬浮背景色
+$menuText: #bfcbd9;
+$menuActiveText: #fff; // menu 激活字体颜色
+/* subMenu */
+$subMenuActiveText: #fff; // subMenu 激活的字体颜色
+$subMenuBg: #282E38; // subMenu 背景色
+$subMenuHover: $--color-primary; // subMenu 鼠标悬浮背景色
+/* 边框颜色 */
+$borderColor: #242931;
+
+:export {
+  menuBg: $menuBg;
+  menuText: $menuText;
+  menuHover: $menuHover;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  borderColor: $borderColor;
+  sideBarBgColor: $sideBarBgColor;
+  headerHeight: $headerHeight;
+  headerBgCorlor: $headerBgCorlor;
+  headerActiveText: $headerActiveText;
+  navbarHeight: $navbarHeight;
+  breadcrumbHeight: $breadcrumbHeight;
+  tagsViewHeight: $tagsViewHeight;
+}

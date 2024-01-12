@@ -1,0 +1,197 @@
+@import './mixins.scss';
+@import './element-variables.scss';
+
+/* 搜索条件通用样式 */
+.top-search-box {
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: #FDFEFF;
+  box-shadow: 0px 1px 5px 0px rgba(32,49,80,0.1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* 表格通用样式 */
+.content-table-box {
+  border-radius: 4px;
+  background-color: #FDFEFF;
+  box-shadow: 0px 1px 5px 0px rgba(32,49,80,0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  .btn-group-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .table-container {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+}
+
+/* tree结构通用样式 */
+.left-tree-box {
+  border-radius: 4px;
+  background-color: #FDFEFF;
+  box-shadow: 0px 1px 5px 0px rgba(32,49,80,0.1);
+  width: 224px;
+  padding: 10px;
+  margin-right: 10px;
+  .tree-title {
+    position: relative;
+    font-size: 18px;
+    font-family: Microsoft YaHei Regular, Microsoft YaHei Regular-Regular;
+    font-weight: 400;
+    padding-left: 12px;
+    margin-bottom: 16px;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 17px;
+      background: var(--color);
+      border-radius: 3px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .tree-content {
+    width: 204px;
+    .tree-item {
+      margin: 12px 0;
+      padding: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-family: Microsoft YaHei Regular, Microsoft YaHei Regular-Regular;
+      font-weight: 400;
+      border-radius: 4px;
+      cursor: pointer;
+      .ico {
+        visibility: hidden;
+      }
+      &:hover {
+        background-color: var(--color);
+        color: #fff;
+        .ico {
+          visibility: visible;
+        }
+      }
+      &.active {
+        background-color: var(--color);
+        color: #fff;
+      }
+    }
+  }
+}
+
+.tab-container {
+  margin-bottom: 10px;
+}
+
+/* 右侧结构通用样式 */
+.right-content-box {
+  flex: 1;
+}
+
+/*左右（右侧布局是上下结构）整屏的通用样式 */
+.lrtb-screen {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  &.hastab {
+    min-height: calc(100vh - 172px);
+  }
+  .right-content-box {
+    width: calc(100% - 234px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .content-table-box {
+      flex: 1;
+    }
+  }
+}
+
+/* 上下（上下布局结构）整屏的通用样式 */
+.tb-screen {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  &.hastab {
+    min-height: calc(100vh - 172px);
+  }
+  .content-table-box {
+    flex: 1;
+  }
+}
+
+/* 404 || 401 页面通用样式 */
+.page-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/photos/beijing.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  .right-wrap {
+    text-align: center;
+    padding-left: 100px;
+  }
+  .alret-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    padding-bottom: 20px;
+  }
+}
+
+/* 表格头部右侧按钮通用样式 */
+.btn-group-box {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 左侧标题 */
+.h3-title {
+  position: relative;
+  font-size: 18px;
+  font-family: Microsoft YaHei Regular, Microsoft YaHei Regular-Regular;
+  font-weight: 400;
+  padding-left: 12px;
+  margin-bottom: 16px;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 17px;
+    background: var(--color);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.form-group-title {
+  font-size: 16px;
+  font-family: Microsoft YaHei Regular, Microsoft YaHei Regular-Regular;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+/* 小圆点样式 */
+.bg-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
